@@ -97,10 +97,7 @@
         padding: var(--spacing-sm, 1rem) var(--spacing-lg, 2rem);
         align-items: center;
         justify-content: space-between;
-        position: sticky; 
-        top: 0;
         
-
         a {
             text-decoration: none;
 
@@ -181,6 +178,17 @@
             }
         }
     }
+}
+
+/* Footer */
+@layer component {
+    footer {
+        background: var(--primary-foreground, #fcfcfc);
+        padding: var(--spacing-lg, 2rem);
+        align-items: center;
+        text-align: center;
+    }
+    
 }
 
 body {
