@@ -1,12 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap');
+
 :root {
     /* Main color palette */
-    --rich-black: #001524ff;
-    --caribbean-current: #15616dff;
-    --papaya-whip: #ffecd1ff;
-    --orange-wheel: #ff7d00ff;
-    --sienna: #78290fff;
+    --sunset-1: #d64a4a;    /* warm red */
+    --sunset-2: #ff8c5b;    /* amber orange */
+    --sunset-3: #715eea;    /* violet */
+    --sunset-soft: #ffa69e; /* soft coral */
 
-    --color-background-light: #fcfcfc; /* Off-white */
+    --color-background-light: #fcfcfc; 
+    --bg: linear-gradient(180deg, #fff8f6 0%, #f5f7ff 100%);
 
     /* Spacing */
     --spacing-xs: 0.5rem;
@@ -15,92 +17,123 @@
     --spacing-lg: 2rem;
     --spacing-xl: 3rem;
 
-    /* Sizing */
-    --border-thickness: 0.25rem;
+    --font-display: "Poppins", "Segoe UI", Roboto, sans-serif;
+    --font-body: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
 }
 
-/********* Debugging Styling *********/
-* {
-    -border: solid 1px red;
-}
+@layer debug {
+    * {
+        -border: solid 1px red;
+    }
 
-header, main, footer {
-    border: 1px solid;
-    -padding: 8px;
-    -margin: 8px;
+    header, main, footer {
+        border: 1px solid;
+        -padding: 8px;
+        -margin: 8px;
 
-    section {
-        border: 1px dotted;
+        section {
+            border: 1px dotted;
+        }
     }
 }
 
-/********* Grid Structuring *********/
-body {
-    display: grid;
-    grid-template-columns:
-        minmax(1rem, 1fr)
-        minmax(auto, 70rem)
-        minmax(1rem, 1fr);
-    gap: 1rem;
+@layer layout {
+    body {
+        display: grid;
+        grid-template-columns:
+            minmax(var(--spacing-sm, 1rem), 1fr)
+            minmax(auto, 60rem)
+            minmax(var(--spacing-sm, 1rem), 1fr);
+        grid-template-rows:
+            5rem 
+            1fr 
+            5rem;
+        min-height: 100vh;
+        gap: var(--spacing-sm, 1rem);
+    }
+
+    header {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    main {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    footer {
+        grid-column: 2;
+        grid-row: 3
+    }
 }
 
-header {
-    grid-column: 2;
-    grid-row: 1;
-}
+@layer base {
+    * {
+        margin: 0;
+        padding: 0;
+    }
 
-main {
-    grid-column: 2;
-    grid-row: 2;
-}
+    ul, ol {
+        padding-left: var(--spacing-md, 1.5rem);
+    }
 
-footer {
-    grid-column: 2;
-    grid-row: 3
+    body {
+        font-family: var(--font-body);
+    }
 }
 
 /********* Styling *********/
 header, main, footer {
-    background: var(--color-background-light, white);
-    border: solid 
-            var(--border-large-thickness, 0.25rem)
-            var(--rich-black, #001524ff);
+    background: var(--color-background-light, #fcfcfc);
 }
 
 /* Header */
-header { 
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem; 
-    align-items: center;
-
-    ul {
+@layer component {
+    header { 
         display: flex;
         flex-wrap: wrap;
-        list-style: none;
-        gap: 2rem;
-        
-        li {
-            a {
-                text-decoration: none;
-                border: solid 
-                        var(--border-thickness, 0.25em)
-                        var(--rich-black, #001524ff);
-                padding: 0.5rem 1rem;
-                display: inline-block;
+        gap: 1rem; 
+        align-items: center;
+        justify-content: center;
+
+        a {
+            text-decoration: none;
+
+            h1 {
+                font-family: var(--font-display);
+                font-weight: 600;
+                background-image: linear-gradient(90deg, var(--sunset-1), var(--sunset-3));
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        }
+
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            gap: 2rem;
+            
+            li {
+                a {
+                    padding: 0.5rem 1rem;
+                    display: inline-block;
+                }
             }
         }
     }
 }
 
 main {
-
     section {
-        border: solid 
-                var(--border-thickness, 0.25em)
-                var(--rich-black, #001524ff);
         margin: var(--spacing-lg, 2rem);
     }
+}
+
+body {
+    background: var(--bg, white);
 }
 
 /********* Media Queries: Steps *********/
