@@ -49,9 +49,9 @@
             minmax(auto, 60rem)
             minmax(var(--spacing-sm, 1rem), 1fr);
         grid-template-rows:
-            5rem 
+            6rem 
             1fr 
-            5rem;
+            6rem;
         min-height: 100vh;
         gap: var(--spacing-sm, 1rem);
     }
@@ -88,18 +88,17 @@
 }
 
 /********* Styling *********/
-header, main, footer {
-    background: var(--color-background-light, #fcfcfc);
-}
-
 /* Header */
 @layer component {
     header { 
+        background: var(--color-background-light, #fcfcfc);
         display: flex;
         flex-wrap: wrap;
-        padding: var(--spacing-sm, 1rem) var(--spacing-lg, 2rem); 
+        padding: var(--spacing-sm, 1rem) var(--spacing-lg, 2rem);
         align-items: center;
         justify-content: space-between;
+        position: sticky; 
+        top: 0;
 
         a {
             text-decoration: none;
@@ -135,9 +134,22 @@ header, main, footer {
     }
 }
 
-main {
-    section {
-        margin: var(--spacing-lg, 2rem);
+/* Main */
+@layer component {
+    main {
+        section {
+            background: var(--color-background-light, #fcfcfc);
+            margin-bottom: var(--spacing-lg, 2rem);
+            padding: var(--spacing-lg, 2rem);
+
+            picture > img {
+                display: block;
+                margin: auto;
+                border-radius: 50%;
+                width: 50%;
+                height: 50%;
+            }
+        }
     }
 }
 
@@ -146,10 +158,8 @@ body {
 }
 
 /********* Media Queries: Steps *********/
-/* STEP 1: Tablet (768px - 1024px) */
 @media (max-width: 64em) {
     body {
-        /* Reduce side margins on tablet */
         grid-template-columns: 
             minmax(0.5rem, 1fr) 
             minmax(auto, 70rem) 
@@ -161,50 +171,46 @@ body {
     }
 }
 
-/* STEP 2: Mobile (up to 767px) */
 @media (max-width: 47.9375em) {
     body {
-        /* Collapse to single column - no side margins needed */
         grid-template-columns: 1fr;
         gap: 0.5rem;
-        padding: 0 0.5rem; /* Add body padding instead */
+        padding: 0 0.5rem; 
     }
     
     header, main, footer {
-        grid-column: 1; /* All take full width */
-        padding: 1rem; /* Reduce padding on small screens */
+        grid-column: 1;
+        padding: 1rem;
     }
     
     header {
-        /* Stack header items vertically on mobile */
         flex-direction: column;
         align-items: flex-start;
         gap: 0.75rem;
         
         h1 {
-            font-size: 1.5rem; /* Smaller title on mobile */
+            font-size: 1.5rem;
         }
         
         ul {
             width: 100%;
-            flex-direction: column; /* Stack nav items vertically */
+            flex-direction: column;
             gap: 0.5rem;
-            padding: 0; /* Remove any default padding */
+            padding: 0;
             
             li {
-                width: 100%; /* Full width list items */
+                width: 100%;
                 
                 a {
-                    display: block; /* Make links full width */
+                    display: block;
                     width: 100%;
-                    text-align: center; /* Center text */
+                    text-align: center;
                     padding: 0.75rem 1rem;
                 }
             }
         }
     }
     
-    /* Make sure images fit */
     main img {
         max-width: 100%;
         height: auto;
