@@ -158,7 +158,7 @@ body {
 }
 
 /********* Media Queries: Steps *********/
-@media (max-width: 64em) {
+/* @media (max-width: 64em) {
     body {
         grid-template-columns: 
             minmax(0.5rem, 1fr) 
@@ -215,4 +215,4 @@ body {
         max-width: 100%;
         height: auto;
     }
-}
+} */
