@@ -2,12 +2,12 @@
 
 :root {
     /* Main color palette */
-    --sunset-1: #d64a4a;    /* warm red */
-    --sunset-2: #ff8c5b;    /* amber orange */
-    --sunset-3: #715eea;    /* violet */
-
-    --primary-foreground: #fcfcfc; 
-    --primary-background: linear-gradient(180deg, #fff8f6 0%, #f5f7ff 100%);
+    --color-text: #1e1d20;
+    --color-sunset-1: #d64a4a;
+    --color-sunset-2: #ff8c5b;
+    --color-sunset-3: #715eea;
+    --color-foreground-primary: #fcfcfc; 
+    --color-background-primary: linear-gradient(180deg, #fff8f6 0%, #f5f7ff 100%);
 
     /* Spacing */
     --spacing-xs: 0.5rem;
@@ -17,8 +17,8 @@
     --spacing-xl: 3rem;
 
     /* Font weights */
-    --weight-reg: 400;
-    --weight-bld: 600;
+    --font-weight-reg: 400;
+    --font-weight-bld: 600;
 
     --font-display: "Poppins", "Segoe UI", Roboto, sans-serif;
     --font-body: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
@@ -74,6 +74,7 @@
 @layer base {
     /* Reset base margin and padding */
     * {
+        color: var(--color-text, #1e1d20);
         margin: 0;
         padding: 0;
     }
@@ -91,7 +92,7 @@
 /* Header */
 @layer component {
     header { 
-        background: var(--primary-foreground, #fcfcfc);
+        background: var(--color-foreground-primary, #fcfcfc);
         display: flex;
         flex-wrap: wrap;
         padding: var(--spacing-sm, 1rem) var(--spacing-lg, 2rem);
@@ -103,8 +104,8 @@
 
             h1 {
                 font-family: var(--font-display);
-                font-weight: var(--weight-bld, 600);
-                background-image: linear-gradient(90deg, var(--sunset-1), var(--sunset-3));
+                font-weight: var(--font-weight-bld, 600);
+                background-image: linear-gradient(90deg, var(--color-sunset-1), var(--color-sunset-3));
                 -webkit-background-clip: text;
                 background-clip: text;
                 -webkit-text-fill-color: transparent;
@@ -120,14 +121,14 @@
             li {
                 a { 
                     display: inline-block;
-                    font-weight: var(--weight-bld, 600);
-                    color: var(--sunset-3, #715eea);
+                    font-weight: var(--font-weight-bld, 600);
+                    color: var(--color-sunset-3, #715eea);
                 }
             }
         }
 
         a:hover {
-            color: color-mix(in hsl, var(--sunset-3), black 15%);
+            color: color-mix(in hsl, var(--color-sunset-3), black 15%);
         }
     }
 }
@@ -160,16 +161,16 @@
         }
 
         section {
-            background: var(--primary-foreground, #fcfcfc);
+            background: var(--color-foreground-primary, #fcfcfc);
             margin-bottom: var(--spacing-lg, 2rem);
             padding: var(--spacing-lg, 2rem);
 
             h2 {
                 font-family: var(--font-display);
-                font-weight: var(--weight-bld, 600);
+                font-weight: var(--font-weight-bld, 600);
                 background: linear-gradient(90deg,
-                    color-mix(in srgb, var(--sunset-1, #d64a4a), white 10%),
-                    color-mix(in srgb, var(--sunset-3, #715eea), white 10%)
+                    color-mix(in srgb, var(--color-sunset-1, #d64a4a), white 10%),
+                    color-mix(in srgb, var(--color-sunset-3, #715eea), white 10%)
                 );
                 -webkit-background-clip: text;
                 background-clip: text;
@@ -183,16 +184,20 @@
 /* Footer */
 @layer component {
     footer {
-        background: var(--primary-foreground, #fcfcfc);
+        background: var(--color-foreground-primary, #fcfcfc);
         padding: var(--spacing-lg, 2rem);
-        align-items: center;
-        text-align: center;
+        -align-items: center;
+        -text-align: center;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
     }
     
 }
 
 body {
-    background: var(--primary-background, white);
+    background: var(--color-background-primary, white);
 }
 
 /********* Media Queries: Steps *********/
