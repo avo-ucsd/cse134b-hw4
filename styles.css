@@ -145,9 +145,23 @@
             picture > img {
                 display: block;
                 margin: auto;
+                margin-bottom: var(--spacing-xl, 3rem);
                 border-radius: 50%;
                 width: 50%;
                 height: 50%;
+            }
+
+            h2 {
+                font-family: var(--font-display);
+                font-weight: var(--weight-bld, 600);
+                background: linear-gradient(90deg,
+                    color-mix(in srgb, var(--sunset-1) 80%, white 20%),
+                    color-mix(in srgb, var(--sunset-3) 80%, white 20%)
+                );
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+                margin-bottom: var(--spacing-sm, 1rem);
             }
         }
     }
