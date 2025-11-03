@@ -12,6 +12,7 @@
     --color-shadow-2: 105, 87, 173;
     --color-foreground-primary: #fcfcfc;
     --color-background-primary: linear-gradient(180deg, #fff8f6 0%, #f5f7ff 100%);
+    --color-darken: calc(l - 0.25) c h;
     --color-light-mix: white 15%;
     --color-dark-mix: black 15%;
 
@@ -99,7 +100,7 @@
     }
 
     a:hover {
-        color: color-mix(in srgb, var(--color-sunset-3, #715eea), var(--color-dark-mix, black 15%));
+        color: oklch(from var(--color-sunset-3, #715eea) var(--color-darken, calc(l - 0.25) c h));
     }
 }
 
@@ -171,7 +172,7 @@
         }
 
         a:hover {
-            color: color-mix(in hsl, var(--color-sunset-3), var(--color-dark-mix, black 15%));
+            color: oklch(from var(--color-sunset-3, #715eea) var(--color-darken, calc(l - 0.25) c h));
         }
 
         /* Hamburger Menu - CSS Only */
