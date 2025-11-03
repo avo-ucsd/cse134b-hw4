@@ -102,6 +102,21 @@
     body {
         font-family: var(--font-body);
     }
+
+    em {
+        color: var(--color-sunset-1, #d64a4a);
+        font-weight: var(--font-weight-bld, 600);
+        font-style: normal;
+    }
+
+    a { 
+        text-decoration: none;
+        color: var(--color-sunset-3, #715eea);
+    }
+
+    a:hover {
+        color: color-mix(in srgb, var(--color-sunset-3, #715eea), var(--color-dark-mix, black 15%));
+    }
 }
 
 /********* Styling *********/
@@ -129,10 +144,6 @@
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-
-            a {
-                text-decoration: none;
-            }
         }
 
         nav {
@@ -231,8 +242,12 @@
             picture > img {
                 display: block;
                 margin-bottom: var(--scale-xl, 3rem);
-                border: var(--color-sunset-3) solid var(--scale-xs, 0.5rem);
-                border-radius: 50%;
+                border-image: 
+                    linear-gradient(180deg, 
+                        var(--color-sunset-2, #ff8c5b),
+                        var(--color-sunset-1, #d64a4a)) 1; 
+                border-width: var(--scale-xs, 0.5rem);
+                border-style: solid;
                 width: 30%;
                 height: 30%;
                 transition: all var(--transition-bounce);
@@ -276,7 +291,7 @@
                 margin-bottom: var(--scale-md, 1.5rem);
             }
 
-            p {
+            p, ul {
                 margin-bottom: var(--scale-sm, 1rem);
             }
         }
@@ -303,24 +318,19 @@
 
                 /* Card Content */
                 h3 {
-                    font-family: var(--font-display);
-                    font-weight: var(--font-weight-bld);
-                    margin: var(--scale-md) var(--scale-md) var(--scale-xs);
+                    font-family: var(--font-display, 400);
+                    font-weight: var(--font-weight-bld, 600);
+                    margin: var(--scale-md, 1.5rem) var(--scale-md, 1.5rem) var(--scale-xs, 0.5rem);
                 }
 
                 p {
-                    margin: 0 var(--scale-md) var(--scale-md);
+                    margin: 0 var(--scale-md, 1.5rem) var(--scale-md, 1.5rem);
                 }
 
                 a {
-                    margin: 0 var(--scale-md) var(--scale-md);
-                    font-weight: var(--font-weight-bld);
-                    color: var(--color-sunset-3);
+                    margin: 0 var(--scale-md, 1.5rem) var(--scale-md, 1.5rem);
+                    font-weight: var(--font-weight-bld, 600);
                     text-decoration: none;
-                }
-
-                a:hover {
-                    color: color-mix(in srgb, var(--color-sunset-3), var(--color-dark-mix, black 15%));
                 }
             }
 
@@ -344,16 +354,15 @@
             }
         }
 
-
         /* Horizontal project cards - list view */
         section .project-list {
             display: flex;
             flex-direction: column;
-            gap: var(--scale-lg);
-            margin-top: var(--scale-md);
+            gap: var(--scale-lg, 2rem);
+            margin-top: var(--scale-md, 1.5rem);
 
             article {
-                padding: var(--scale-md);
+                padding: var(--scale-md, 1.5rem);
                 display: flex;
                 flex-direction: column;
                 background: var(--color-foreground-primary, #fcfcfc);
@@ -369,27 +378,27 @@
 
                 h3 {
                     font-family: var(--font-display);
-                    font-weight: var(--font-weight-bld);
-                    margin-bottom: var(--scale-xs);
-                    color: var(--color-text);
+                    font-weight: var(--font-weight-bld, 600);
+                    margin-bottom: var(--scale-xs, 0.5rem);
+                    color: var(--color-text, #1e1d20);
                 }
 
                 p {
                     flex: 1;
                     line-height: 1.6;
-                    margin-bottom: var(--scale-sm);
-                    color: var(--color-text);
+                    margin-bottom: var(--scale-sm, 1rem);
+                    color: var(--color-text, #1e1d20);
                 }
 
                  a {
                     align-self: flex-start;
-                    font-weight: var(--font-weight-bld);
-                    color: var(--color-sunset-3);
+                    font-weight: var(--font-weight-bld, 600);
+                    color: var(--color-sunset-3, #715eea);
                     text-decoration: none;
                 }
 
                 a:hover {
-                    color: color-mix(in srgb, var(--color-sunset-3), var(--color-dark-mix, black 15%));
+                    color: color-mix(in srgb, var(--color-sunset-3, #715eea), var(--color-dark-mix, black 15%));
                 }
             }
 
