@@ -232,16 +232,31 @@
 /* Main */
 @layer component {
     main {
+        /* Any section with a standalone picture gets centered portrait styling */
+        section > picture:first-of-type img {
+            display: block;
+            margin: var(--scale-lg) auto;
+            max-width: 300px;
+            border-image: 
+                linear-gradient(180deg, 
+                    var(--color-sunset-2, #ff8c5b),
+                    var(--color-sunset-1, #d64a4a)) 1; 
+            border-width: var(--scale-xs, 0.5rem);
+            border-style: solid;
+        }
+
         #greeting {
             min-height: 30dvh;
 
-            * {
+            > * {
                 margin: auto;
             }
 
             picture > img {
                 display: block;
                 margin-bottom: var(--scale-xl, 3rem);
+                margin-left: auto;
+                margin-right: auto;
                 border-image: 
                     linear-gradient(180deg, 
                         var(--color-sunset-2, #ff8c5b),
@@ -493,6 +508,59 @@ body[data-page="home"] {
     }
 }
 
+/* ---------------------------
+   Experience / Resume: remove inner cards
+   - Keep the outer Resume container visually boxed
+   - Remove backgrounds, shadows, radii from nested sections
+   - Keep Resume H2 gradient intact
+   --------------------------- */
+body[data-page="experience"] main > section {
+  /* outer "Resume" section: keep existing boxed look (no change needed)
+     but reinforce a clear container if any earlier rule changed it */
+  background: var(--color-foreground-primary, #fcfcfc);
+  border-radius: var(--scale-sm, 1rem);
+  box-shadow: 
+    var(--shadow-displacement-1, 0 6px 18px) rgba(var(--color-shadow-1, 49,44,66), var(--shadow-alpha-soft, 0.1));
+  padding: var(--scale-lg, 2rem);
+}
+
+/* nested sections inside the outer Resume should be plain text */
+body[data-page="experience"] {
+    main > section > section {
+        /* Remove card visuals */
+        background: none;
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+        padding: 0;
+        margin: 0 0 var(--scale-md, 1.5rem);
+
+        /* Text and lists */
+        ul, ol {
+            margin: 0 0 var(--scale-sm, 1rem);
+            padding-left: var(--scale-md, 1.5rem);
+        }
+
+        h3, h4 {
+            background: none;
+            -webkit-text-fill-color: initial;
+            color: var(--color-text, #1e1d20);
+            margin: 0 0 var(--scale-xs, 0.5rem);
+            font-weight: var(--font-weight-bld, 600);
+        }
+
+        /* Reset inherited shadows/borders from children */
+        * {
+            box-shadow: none;
+            border: none;
+            border-radius: 0;
+            background: none;
+        }
+    }
+}
+
+
+
 /********* Media Queries *********/
 @media (prefers-reduced-motion: reduce) {
     * {
@@ -567,6 +635,12 @@ body[data-page="home"] {
         margin-bottom: var(--scale-md);
     }
 
+    section > picture:first-of-type img {
+        max-width: 60%;
+        height: auto;
+        margin-bottom: var(--scale-md);
+    }
+
     .card-grid {
         grid-template-columns: 1fr;
         gap: var(--scale-md);
@@ -591,6 +665,10 @@ body[data-page="home"] {
 
     #greeting picture > img {
         width: 40%;
+    }
+
+    section > picture:first-of-type img {
+        max-width: 250px;
     }
 
     main section {
