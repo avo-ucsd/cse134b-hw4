@@ -13,16 +13,19 @@
 </head>
 <body data-page="home">
     <header>
-        <a href="./index.html">
-            <h1>Ashley Vo</h1>
-        </a>
+        <h1>
+            <a href="./index.html">Ashley Vo</a>
+        </h1>
 
-        
+        <!-- Hamburger checkbox (hidden) and button -->
+        <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation menu">
+        <label for="menu-toggle" class="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
 
         <nav>
-            <label for"menu">&#9776;</label>
-            <input id='menu' type='checkbox'>
-
             <ul>
                 <li><a href="./index.html">Home</a></li>
                 <li><a href="./projects.html">Projects</a></li>
@@ -38,7 +41,15 @@
 
         <section id="greeting">
             <picture>
-                <img src="./images/portrait.jpg" alt="A portrait of Ashley Vo, the website developer">
+                <source
+                    srcset="./images/portrait1-300.jpg 300w,
+                            ./images/portrait1-600.jpg 600w,
+                            ./images/portrait1-900.jpg 900w"
+                    sizes="(max-width: 400px) 60vw, 
+                           (max-width: 1024px) 40vq,
+                           30vw"
+                    type="image/jpeg">
+                <img src="./images/portrait1-600.jpg" alt="A portrait of Ashley Vo, the website developer">
             </picture>
             <h2>Hi! I'm <strong>Ashley</strong>!</h2>
             <p>
