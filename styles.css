@@ -246,6 +246,10 @@
                 -webkit-background-clip: text;
                 background-clip: text;
                 -webkit-text-fill-color: transparent;
+                margin-bottom: var(--scale-md, 1.5rem);
+            }
+
+            p {
                 margin-bottom: var(--scale-sm, 1rem);
             }
         }
