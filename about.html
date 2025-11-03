@@ -42,8 +42,17 @@
         <section>            
             <h2>About Me</h2>
             <picture>
-                <img src="./images/portrait.jpg" alt="A portrait of Ashley Vo, the website developer" height="400" width="400">
+                <source
+                    srcset="./images/portrait1-300.jpg 300w,
+                            ./images/portrait1-600.jpg 600w,
+                            ./images/portrait1-900.jpg 900w"
+                    sizes="(max-width: 400px) 60vw, 
+                           (max-width: 1024px) 40vq,
+                           30vw"
+                    type="image/jpeg">
+                <img src="./images/portrait1-600.jpg" alt="A portrait of Ashley Vo, the website developer">
             </picture>
+            
             <p>
                 My name's <span>Ashley Vo</span>, and I'm currently pursuing my Bachelor's in Computer Science at the University of California, San Diego. I love data and learning what kinds of stories numbers tell, and I also enjoy the process of developing software to solve problems. Outside of academics, I enjoy drawing and playing video games!
             </p>
