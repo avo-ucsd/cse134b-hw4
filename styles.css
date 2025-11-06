@@ -411,6 +411,9 @@
 /* Footer */
 @layer component {
     footer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
         background: var(--color-foreground-primary, #fcfcfc);
         padding: var(--scale-lg, 2rem);
         text-align: center;
@@ -419,6 +422,10 @@
             rgba(var(--color-shadow-1, 49, 44, 66), var(--shadow-alpha-soft, 0.1)),
             var(--shadow-displacement-2, 0 2px 4px)
             rgba(var(--color-shadow-2, 105, 87, 173), var(--shadow-alpha-hard, 0.15));
+
+        div {
+            margin: auto;
+        }
     }
     
 }
@@ -542,8 +549,6 @@ body[data-page="experience"] {
         }
     }
 }
-
-
 
 /********* Media Queries *********/
 @media (prefers-reduced-motion: reduce) {
