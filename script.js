@@ -1,56 +1,42 @@
-
-        const storageKey = 'theme-preference'
-
-const onClick = () => {
-  // flip current value
-  theme.value = theme.value === 'light'
-    ? 'dark'
-    : 'light'
-
-  setPreference()
-}
+const storageKey = 'theme-preference'
 
 const getColorPreference = () => {
-  if (localStorage.getItem(storageKey))
-    return localStorage.getItem(storageKey)
-  else
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : 'light'
+  if (localStorage.getItem(storageKey)) {
+    return localStorage.getItem(storageKey);
+  } else {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
 }
 
 const setPreference = () => {
-  localStorage.setItem(storageKey, theme.value)
-  reflectPreference()
+  localStorage.setItem(storageKey, theme.value);
+  reflectPreference();
 }
 
 const reflectPreference = () => {
-  document.firstElementChild
-    .setAttribute('data-theme', theme.value)
+  document.firstElementChild.setAttribute('data-theme', theme.value);
 }
 
 const theme = {
-  value: getColorPreference(),
+  value: getColorPreference()
 }
 
-// set early so no page flashes / CSS is made aware
-reflectPreference()
+// Set early so no page flashes
+reflectPreference();
 
 window.onload = () => {
-  // set on load so screen readers can see latest value on the button
-  reflectPreference()
+  reflectPreference();
 
-  // now this script can find and listen for clicks on the control
-  document
-    .querySelector('#theme-toggle')
-    .addEventListener('click', onClick)
+  const themeToggleButton = document.querySelector('#theme-toggle');
+  themeToggleButton.addEventListener('click', () => {
+    theme.value = (theme.value === 'light') ? 'dark' : 'light';
+    setPreference();
+  });
 }
 
-// sync with system changes
-window
-  .matchMedia('(prefers-color-scheme: dark)')
-  .addEventListener('change', ({matches:isDark}) => {
-    theme.value = isDark ? 'dark' : 'light'
-    setPreference()
-  })
-        
+// Sync with system changes
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', ({matches:isDark}) => {
+        theme.value = (isDark) ? 'dark' : 'light';
+        setPreference();
+});
+

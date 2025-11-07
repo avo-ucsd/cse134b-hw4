@@ -577,52 +577,6 @@ body[data-page="experience"] {
     }
 }  
 
-/********* Media Queries *********/
-/* ===== User Preferences ===== */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0s !important;
-        transition-duration: 0s !important;
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-        --color-text: #e8e6f0;
-        --color-sunset-1: #ff6b6b;      
-        --color-sunset-2: #ff9a5c;      
-        --color-sunset-3: #8b7aff;  
-        --color-shadow-1: 90, 95, 130;
-        --color-shadow-2: 255, 107, 107;
-        --color-foreground-primary: #0c0c10;
-        --color-background-primary: linear-gradient(180deg, 
-                                                  #0a0a0e 0%,
-                                                  #0e0e12 100%);
-        --color-foreground-border: #807e7d3d;
-        --color-link-hover: calc(l * 1.25) c h;
-        --color-background-graph-base: linear-gradient(180deg, 
-                                         rgba(23, 18, 16, 0.8) 0%, 
-                                         rgba(10, 8, 19, 0.9) 100%);
-        --color-background-graph-wash-1: repeating-linear-gradient(
-                                            0deg,
-                                            rgba(255, 255, 255, 0.20) 0px,
-                                            rgba(255, 255, 255, 0.20) 1px,
-                                            transparent 1px,
-                                            transparent 24px
-                                        );
-        --color-background-graph-wash-2: repeating-linear-gradient(
-                                            90deg,
-                                            rgba(255, 255, 255, 0.20) 0px,
-                                            rgba(255, 255, 255, 0.20) 1px,
-                                            transparent 1px,
-                                            transparent 24px
-                                        );
-        
-        
-    }
-}
-
-
 /********* Responsive Layout *********/
 /* ===== Small Screens: mobile phones ===== */
 @media (max-width: 42.5em) {
@@ -751,4 +705,113 @@ body[data-page="experience"] {
     .card-grid {
         grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
     }
+}
+
+/* ===== User Preferences ===== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0s !important;
+        transition-duration: 0s !important;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-text: #e8e6f0;
+        --color-sunset-1: #ff6b6b;      
+        --color-sunset-2: #ff9a5c;      
+        --color-sunset-3: #8b7aff;  
+        --color-shadow-1: 90, 95, 130;
+        --color-shadow-2: 255, 107, 107;
+        --color-foreground-primary: #0c0c10;
+        --color-background-primary: linear-gradient(180deg, 
+                                                  #0a0a0e 0%,
+                                                  #0e0e12 100%);
+        --color-foreground-border: #807e7d3d;
+        --color-link-hover: calc(l * 1.25) c h;
+        --color-background-graph-base: linear-gradient(180deg, 
+                                         rgba(23, 18, 16, 0.8) 0%, 
+                                         rgba(10, 8, 19, 0.9) 100%);
+        --color-background-graph-wash-1: repeating-linear-gradient(
+                                            0deg,
+                                            rgba(255, 255, 255, 0.20) 0px,
+                                            rgba(255, 255, 255, 0.20) 1px,
+                                            transparent 1px,
+                                            transparent 24px
+                                        );
+        --color-background-graph-wash-2: repeating-linear-gradient(
+                                            90deg,
+                                            rgba(255, 255, 255, 0.20) 0px,
+                                            rgba(255, 255, 255, 0.20) 1px,
+                                            transparent 1px,
+                                            transparent 24px
+                                        );   
+    }
+}
+
+/* Re-applies Dark Theme variables (matches the OS preference block) */
+[data-theme="dark"] {
+    --color-text: #e8e6f0;
+    --color-sunset-1: #ff6b6b;      
+    --color-sunset-2: #ff9a5c;      
+    --color-sunset-3: #8b7aff;  
+    --color-shadow-1: 90, 95, 130;
+    --color-shadow-2: 255, 107, 107;
+    --color-foreground-primary: #0c0c10;
+    --color-background-primary: linear-gradient(180deg, 
+                                                  #0a0a0e 0%,
+                                                  #0e0e12 100%);
+    --color-foreground-border: #807e7d3d;
+    --color-link-hover: calc(l * 1.25) c h;
+    --color-background-graph-base: linear-gradient(180deg, 
+                                         rgba(23, 18, 16, 0.8) 0%, 
+                                         rgba(10, 8, 19, 0.9) 100%);
+    --color-background-graph-wash-1: repeating-linear-gradient(
+                                            0deg,
+                                            rgba(255, 255, 255, 0.20) 0px,
+                                            rgba(255, 255, 255, 0.20) 1px,
+                                            transparent 1px,
+                                            transparent 24px
+                                        );
+    --color-background-graph-wash-2: repeating-linear-gradient(
+                                            90deg,
+                                            rgba(255, 255, 255, 0.20) 0px,
+                                            rgba(255, 255, 255, 0.20) 1px,
+                                            transparent 1px,
+                                            transparent 24px
+                                        );
+}
+
+/* Re-applies Light Theme variables (matches the default :root block) */
+[data-theme="light"] {
+    --color-text: #1e1d20;
+    --color-sunset-1: #d64a4a;
+    --color-sunset-2: #ff8c5b;
+    --color-sunset-3: #715eea;
+    --color-shadow-1: 49, 44, 66;
+    --color-shadow-2: 105, 87, 173;
+    --color-foreground-primary: #fcfcfc;
+    --color-background-primary: linear-gradient(180deg, 
+                                              #fff8f6 0%, 
+                                              #f5f7ff 100%);
+    --color-foreground-border: #dcdcdc;
+    --color-link-hover: calc(l - 0.25) c h;
+    --color-light-mix: white 15%;
+    --color-background-graph-base: linear-gradient(180deg, 
+                                                rgba(255, 248, 246, 0.9) 0%, 
+                                                rgba(245, 247, 255, 0.95) 100%);
+    --color-background-graph-wash-1: repeating-linear-gradient(
+                                        0deg,
+                                        rgba(0, 0, 0, 0.03) 0px,
+                                        rgba(0, 0, 0, 0.03) 1px,
+                                        transparent 1px,
+                                        transparent 24px
+                                    );
+    --color-background-graph-wash-2: repeating-linear-gradient(
+                                        90deg,
+                                        rgba(0, 0, 0, 0.03) 0px,
+                                        rgba(0, 0, 0, 0.03) 1px,
+                                        transparent 1px,
+                                        transparent 24px
+                                    );
 }
