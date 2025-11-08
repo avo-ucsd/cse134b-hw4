@@ -39,4 +39,3 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', ({m
         theme.value = (isDark) ? 'dark' : 'light';
         setPreference();
 });
-

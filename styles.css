@@ -565,7 +565,7 @@ body[data-page="experience"] {
     }
 }
 
-/* Animation for home page */
+/********* Animations *********/
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -577,7 +577,10 @@ body[data-page="experience"] {
     }
 }  
 
-/********* Responsive Layout *********/
+@view-transition {
+    navigation: auto;
+}
+
 /* ===== Small Screens: mobile phones ===== */
 @media (max-width: 42.5em) {
     header {
