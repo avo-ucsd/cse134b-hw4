@@ -45,7 +45,7 @@
             <p>Want to reach out? The best way to contact me would be to send me an email via the form below. I'm also on <a href="https://www.linkedin.com/in/ashley-v-abb6b824b/">LinkedIn</a> and <a href="https://github.com/TeaFive">GitHub</a>.</p>
 
             <h3>Send a message</h3>
-            <form>
+            <form action="https://httpbin.org/post" method="POST">
                 <div>
                     <form-field>
                         <label for="name">Name</label>
@@ -58,8 +58,7 @@
 
                     <form-field>
                         <label for="email">Email</label>
-                        <input type="email" 
-                               pattern="email" 
+                        <input type="email"  
                                name="email" 
                                id="email" 
                                placeholder="e.g. example@email.com" 
@@ -75,9 +74,10 @@
                               rows="5" 
                               cols="64" 
                               placeholder="e.g. Hello, world!" 
-                              required>
-                    </textarea>
+                              required></textarea>
                 </form-field>
+
+                <input type="hidden" name="possible_bot" value="true">
 
                 <input type="submit">
             </form>
