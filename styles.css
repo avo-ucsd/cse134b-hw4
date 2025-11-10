@@ -660,6 +660,11 @@ body[data-page="contact"] {
                 font-weight: var(--font-weight-bld, 600);
                 color: var(--color-text);
                 font-size: var(--scale-sm, 1rem);
+
+                abbr {
+                    color: var(--color-sunset-1);
+                    text-decoration: none;
+                }
             }
 
             input, textarea {

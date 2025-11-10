@@ -41,14 +41,17 @@
 
         <section>
             <h2>Contact</h2>
-            <p>I'd be more than happy to chat about anything! Whether it be about myself, hobbies, projects, collaborations, or opportunities, let's connect!</p>
-            <p>Want to reach out? The best way to contact me would be to send me an email via the form below. I'm also on <a href="https://www.linkedin.com/in/ashley-v-abb6b824b/">LinkedIn</a> and <a href="https://github.com/TeaFive">GitHub</a>.</p>
+            <p>Want to reach out? I'd be more than happy to chat about anything! Whether it be about myself, hobbies, projects, collaborations, or opportunities, let's connect!</p>
+            <p>The best way to contact me would be to send me an email via the form below. I'm also on <a href="https://www.linkedin.com/in/ashley-v-abb6b824b/">LinkedIn</a> and <a href="https://github.com/TeaFive">GitHub</a>.</p>
 
             <h3>Send a message</h3>
             <form action="https://httpbin.org/post" method="POST">
                 <div>
                     <form-field>
-                        <label for="name">Name</label>
+                        <label for="name">
+                            Name
+                            <abbr title="Required field">*</abbr>
+                        </label>
                         <input type="text" 
                                name="name" 
                                id="name" 
@@ -57,7 +60,10 @@
                     </form-field>
 
                     <form-field>
-                        <label for="email">Email</label>
+                        <label for="email">
+                            Email
+                            <abbr title="Required field">*</abbr>
+                        </label>
                         <input type="email"  
                                name="email" 
                                id="email" 
@@ -67,7 +73,24 @@
                 </div>
 
                 <form-field>
-                    <label for="message">Message</label>
+                    <label for="subject">
+                        Subject
+                        <abbr title="Required field">*</abbr>
+                    </label>
+                    <input type="text" 
+                           name="subject" 
+                           id="subject" 
+                           rows="5" 
+                           cols="64" 
+                           placeholder="e.g. Let's work together!" 
+                           required>
+                </form-field>
+
+                <form-field>
+                    <label for="message">
+                        Message
+                        <abbr title="Required field">*</abbr>
+                    </label>
                     <textarea type="text" 
                               name="message" 
                               id="message" 
@@ -78,6 +101,9 @@
                 </form-field>
 
                 <input type="hidden" name="possible_bot" value="true">
+
+                <output name="error" id="error-output"></output>
+                <output name="info" id="info-output"></output>
 
                 <input type="submit">
             </form>
