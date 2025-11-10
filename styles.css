@@ -643,7 +643,8 @@ body[data-page="contact"] {
         border: 1px solid var(--color-foreground-border);
         margin-top: var(--scale-md, 1.5rem);
         
-        > div {
+        > fieldset {
+            border: 0;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: var(--scale-md, 1.5rem);
@@ -695,9 +696,41 @@ body[data-page="contact"] {
             }
 
             textarea {
-                resize: vertical;
-                min-height: 120px;
                 font-family: var(--font-body);
+                max-width: 100%;
+                min-height: 10rem;
+                max-height: 20rem;
+                resize: vertical;
+                box-sizing: border-box;
+                overflow-wrap: break-word;
+                word-break: break-word;
+                white-space: pre-wrap;
+                field-sizing: content;
+            }
+
+            span[aria-live='polite'] {
+                color: red;
+                display: none;
+            }
+
+            input:-webkit-autofill,
+            input:-webkit-autofill:hover,
+            input:-webkit-autofill:focus,
+            input:-webkit-autofill:active {
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: var(--color-text);
+                transition: background-color 5000s ease-in-out 0s;
+            }
+
+            input:user-invalid {
+                border: 1px solid red;
+                background-color: color-mix(in srgb,
+                                      var(--color-foreground-primary) 95%, 
+                                    red);
+
+                &~span[aria-live='polite'] {
+                    display: block;
+                }
             }
         }
 
@@ -735,6 +768,16 @@ body[data-page="contact"] {
                 box-shadow:
                     0 2px 8px rgba(var(--color-shadow-2), 0.3),
                     0 1px 2px rgba(var(--color-shadow-1), 0.2);
+            }
+        }
+
+        output {
+            display: block;
+            margin: var(--scale-sm, 1rem) 0
+                    var(--scale-sm, 1rem) 0;
+
+            &#contact-error-output {
+                -border: 1px solid red;
             }
         }
     }

@@ -46,66 +46,72 @@
 
             <h3>Send a message</h3>
             <form action="https://httpbin.org/post" method="POST">
-                <div>
+                <fieldset>
                     <form-field>
-                        <label for="name">
+                        <label for="contact-name">
                             Name
                             <abbr title="Required field">*</abbr>
                         </label>
                         <input type="text" 
-                               name="name" 
-                               id="name" 
-                               placeholder="e.g. First Last" 
+                               name="contact-name" 
+                               id="contact-name" 
+                               placeholder="e.g. First Last"
+                               autocomplete="off" 
                                required>
+                        <span aria-live="polite">Please provide a name.</span>
                     </form-field>
 
                     <form-field>
-                        <label for="email">
+                        <label for="contact-email">
                             Email
                             <abbr title="Required field">*</abbr>
                         </label>
                         <input type="email"  
-                               name="email" 
-                               id="email" 
+                               name="contact-email" 
+                               id="contact-email" 
                                placeholder="e.g. example@email.com" 
                                required>
+                        <span aria-live="polite">Please provide a valid email.</span>
                     </form-field>
-                </div>
+                </fieldset>
 
                 <form-field>
-                    <label for="subject">
+                    <label for="contact-subject">
                         Subject
                         <abbr title="Required field">*</abbr>
                     </label>
                     <input type="text" 
-                           name="subject" 
-                           id="subject" 
+                           name="contact-subject" 
+                           id="contact-subject" 
                            rows="5" 
                            cols="64" 
-                           placeholder="e.g. Let's work together!" 
+                           placeholder="e.g. Let's work together!"
+                           autocomplete="off"
                            required>
+                    <span aria-live="polite">Please provide a subject line.</span>
                 </form-field>
 
                 <form-field>
-                    <label for="message">
+                    <label for="contact-message">
                         Message
                         <abbr title="Required field">*</abbr>
                     </label>
                     <textarea type="text" 
-                              name="message" 
-                              id="message" 
+                              name="contact-message" 
+                              id="contact-message" 
                               rows="5" 
                               cols="64" 
                               placeholder="e.g. Hello, world!" 
                               required></textarea>
+                    <span aria-live="polite">Please provide a message.</span>
                 </form-field>
 
                 <input type="hidden" name="possible_bot" value="true">
 
-                <output name="error" id="error-output"></output>
-                <output name="info" id="info-output"></output>
-
                 <input type="submit">
+
+                <output name="error" id="contact-error-output"></output>
+                <output name="info" id="contact-info-output"></output>
             </form>
         </section>
     </main>
