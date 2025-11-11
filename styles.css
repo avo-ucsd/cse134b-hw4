@@ -912,6 +912,22 @@ body[data-page="contact"] {
             }
         }
     }
+
+    body[data-page="contact"] {
+        form {
+            padding: var(--scale-md, 1.5rem);
+            
+            > fieldset {
+                grid-template-columns: 1fr;
+                gap: var(--scale-sm, 1rem);
+            }
+
+            input[type="submit"] {
+                width: 100%;
+                padding: var(--scale-md, 1.5rem);
+            }
+        }
+    }
 }
 
 /* ===== Medium Screens: tablets & small laptops ===== */
