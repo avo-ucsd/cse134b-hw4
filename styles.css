@@ -648,7 +648,7 @@ body[data-page="contact"] {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: var(--scale-md, 1.5rem);
-            margin-bottom: var(--scale-sm, 1rem);
+            margin-bottom: var(--scale-md, 1.5rem);
         }
 
         form-field {
@@ -732,6 +732,7 @@ body[data-page="contact"] {
 
             span[aria-live='polite'] {
                 display: block;
+                font-size: 0.9rem;
                 color: red;
                 -display: none;
                 visibility: hidden;
