@@ -492,7 +492,7 @@
                     transition: transform 0.2s ease;
 
                     &:hover {
-                        transform: scale(1.1);
+                        animation: wiggle 0.5s ease-in-out forwards;
                     } 
                 }
 
@@ -509,7 +509,7 @@
                     display: block;
                 }
 
-                #sun-rays, #sun, #moon {
+                #sun, #moon {
                     transform-origin: center;
                     transition: var(--transition-theme);
                 }
@@ -518,14 +518,7 @@
     }
 
     #theme-icon {
-        width: 24px;
-        height: 24px;
         position: relative;
-    }
-
-    #sun-rays {
-        transform-origin: center;
-        transition: var(--transition-theme);
     }
 
     #sun, #moon {
@@ -809,7 +802,25 @@ body[data-page="contact"] {
         opacity: 1;
         transform: translateY(0);
     }
-}  
+}
+
+@keyframes wiggle {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-5deg) scale(1.05);
+    }
+
+    75% {
+        transform: rotate(5deg) scale(1.05);
+    }
+    
+    100% {
+        transform: rotate(0deg);
+    }
+}
 
 @view-transition {
     navigation: auto;
@@ -1057,13 +1068,6 @@ body[data-page="contact"] {
         transition: var(--transition-theme);
     }
 
-    #sun-rays {
-        opacity: 0;
-        transform: rotate(90deg) scale(0.8);
-        transform-origin: center;
-        transition: var(--transition-theme);
-    }
-
     #moon {
         opacity: 1;
         transform: scale(1) rotate(0deg);
@@ -1105,13 +1109,6 @@ body[data-page="contact"] {
                                     );
 
     #sun {
-        opacity: 1;
-        transform: scale(1) rotate(0deg);
-        transform-origin: center;
-        transition: var(--transition-theme);
-    }
-
-    #sun-rays {
         opacity: 1;
         transform: scale(1) rotate(0deg);
         transform-origin: center;
