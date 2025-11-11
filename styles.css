@@ -695,7 +695,7 @@ body[data-page="contact"] {
                 }
 
                 &:user-invalid {
-                    border: 1px solid red;
+                    border: 2px solid red;
                     background-color: color-mix(in srgb,
                                         var(--color-foreground-primary) 95%,
                                             red);
@@ -734,7 +734,6 @@ body[data-page="contact"] {
                 display: block;
                 font-size: 0.9rem;
                 color: red;
-                -display: none;
                 visibility: hidden;
             }
         }
