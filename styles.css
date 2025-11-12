@@ -474,6 +474,14 @@
 
         a {
             color: color-mix(in srgb, var(--color-text) 60%, transparent);
+
+            &:hover {
+                color: var(--color-sunset-3);
+
+                svg {
+                    fill: var(--color-sunset-3);
+                }
+            }
         }
 
         section {
@@ -500,14 +508,6 @@
                     gap: var(--scale-xs, 0.5rem);
                     transition: color 0.2s ease;
                     
-                    &:hover {
-                        color: var(--color-sunset-3);
-
-                        svg {
-                            fill: var(--color-sunset-3);
-                        }
-                    }
-
                     svg {
                         fill: color-mix(in srgb, var(--color-text) 60%, transparent);
                         flex-shrink: 0;
