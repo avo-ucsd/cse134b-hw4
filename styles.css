@@ -447,9 +447,8 @@
 @layer component {
     footer {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
         grid-template-rows: 1fr;
-        gap: var(--scale-lg, 2rem);
         background: var(--color-foreground-primary, #fcfcfc);
         padding: var(--scale-lg, 2rem);
         box-shadow:
@@ -467,44 +466,79 @@
             -webkit-text-fill-color: transparent;
         }
 
-        h2 { 
+        h2 {
             font-size: var(--scale-sm, 1rem);
+            color: var(--color-text);
+            margin-bottom: var(--scale-xs, 0.5rem);
+        }
+
+        a {
+            color: color-mix(in srgb, var(--color-text) 60%, transparent);
         }
 
         section {
             display: flex;
             flex-direction: column;
-            gap: var(--scale-md, 1rem);
+            gap: var(--scale-xs, 0.5rem);
+    
+            ul {
+                list-style: none;
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                gap: var(--scale-xs, 0.5rem);
+            }
 
             div {
                 display: flex;
-                align-items: center;
+                flex-direction: column;
                 gap: var(--scale-xs, 0.5rem);
 
-                svg, button {
-                    display: block;
+                a {
+                    display: flex;
+                    align-items: center;
+                    gap: var(--scale-xs, 0.5rem);
+                    transition: color 0.2s ease;
+                    
+                    &:hover {
+                        color: var(--color-sunset-3);
+
+                        svg {
+                            fill: var(--color-sunset-3);
+                        }
+                    }
+
+                    svg {
+                        fill: color-mix(in srgb, var(--color-text) 60%, transparent);
+                        flex-shrink: 0;
+                    }
+                }
+
+                button {
+                    display: flex;
                     font: inherit;
-                    color: inherit;
+                    color: color-mix(in srgb, var(--color-text) 60%,    transparent);
                     gap: var(--scale-xs, 0.5rem);
                     background: none;
                     border: none;
                     cursor: pointer;
-                    transition: transform 0.2s ease;
+                    transition: color 0.2s ease;
+                    align-items: center;
 
+                    svg {
+                        fill: color-mix(in srgb, var(--color-text) 60%, transparent);
+                    }
+                    
                     &:hover {
-                        animation: wiggle 0.5s ease-in-out forwards;
-                    } 
-                }
+                        color: var(--color-sunset-3);
 
-                ul {
-                    list-style: none;
-                    display: flex;
-                    gap: var(--scale-sm, 1rem);
+                        svg {
+                            fill: var(--color-sunset-3);
+                        }
+                    }
                 }
 
                 #theme-icon {
-                    width: 24px;
-                    height: 24px;
                     position: relative;
                     display: block;
                 }
@@ -515,15 +549,6 @@
                 }
             }
         }
-    }
-
-    #theme-icon {
-        position: relative;
-    }
-
-    #sun, #moon {
-        transform-origin: center;
-        transition: var(--transition-theme);
     }
 }
 
