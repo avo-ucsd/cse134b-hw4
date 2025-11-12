@@ -866,6 +866,42 @@ body[data-page="contact"] {
         top: 0;
         padding: var(--scale-sm) var(--scale-md);
         z-index: 1000;  /* Ensure it's on top */
+
+        /* Hide nav by default on mobile */
+        nav {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--color-foreground-primary);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            box-shadow: 0 4px 12px rgba(var(--color-shadow-1), 0.15);
+            z-index: 101;  /* Higher than header */
+
+            ul {
+                flex-direction: column;
+                padding: var(--scale-md);
+                gap: var(--scale-xs);
+            }
+
+            li {
+                width: 100%;
+            }
+
+            a {
+                display: block;
+                padding: var(--scale-sm);
+                text-align: center;
+                border-radius: 0.5rem;
+                transition: background 0.2s ease;
+            }
+
+            a:hover {
+                background: color-mix(in srgb, var(--color-sunset-3) 10%, transparent);
+            }
+        }
     }
 
     /* Show hamburger on mobile */
@@ -873,45 +909,9 @@ body[data-page="contact"] {
         display: flex;
     }
 
-    /* Hide nav by default on mobile */
-    header nav {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: var(--color-foreground-primary);
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease;
-        box-shadow: 0 4px 12px rgba(var(--color-shadow-1), 0.15);
-        z-index: 101;  /* Higher than header */
-    }
-
     /* Show nav when checkbox is checked */
     .menu-toggle:checked ~ nav {
         max-height: 400px;
-    }
-
-    header nav ul {
-        flex-direction: column;
-        padding: var(--scale-md);
-        gap: var(--scale-xs);
-    }
-
-    header nav li {
-        width: 100%;
-    }
-
-    header nav a {
-        display: block;
-        padding: var(--scale-sm);
-        text-align: center;
-        border-radius: 0.5rem;
-        transition: background 0.2s ease;
-    }
-
-    header nav a:hover {
-        background: color-mix(in srgb, var(--color-sunset-3) 10%, transparent);
     }
 
     main section {
