@@ -447,8 +447,9 @@
 @layer component {
     footer {
         display: grid;
-        grid-template-columns: 2fr 1fr 1fr 1fr;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
         grid-template-rows: 1fr;
+        gap: var(--scale-xl, 2rem);
         background: var(--color-foreground-primary, #fcfcfc);
         padding: var(--scale-lg, 2rem);
         box-shadow:
@@ -517,6 +518,7 @@
                 button {
                     display: flex;
                     font: inherit;
+                    text-align: left;
                     color: color-mix(in srgb, var(--color-text) 60%,    transparent);
                     gap: var(--scale-xs, 0.5rem);
                     background: none;
@@ -911,7 +913,9 @@ body[data-page="contact"] {
     }
 
     footer {
+        grid-template-columns: 1fr;
         padding: var(--scale-md);
+        gap: var(--scale-lg, 2rem);
         font-size: 0.9rem;
     }
 
@@ -920,22 +924,6 @@ body[data-page="contact"] {
             padding: var(--scale-md, 1.5rem);
             
             > div {
-                grid-template-columns: 1fr;
-                gap: var(--scale-sm, 1rem);
-            }
-
-            input[type="submit"] {
-                width: 100%;
-                padding: var(--scale-md, 1.5rem);
-            }
-        }
-    }
-
-    body[data-page="contact"] {
-        form {
-            padding: var(--scale-md, 1.5rem);
-            
-            > fieldset {
                 grid-template-columns: 1fr;
                 gap: var(--scale-sm, 1rem);
             }
