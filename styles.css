@@ -530,7 +530,7 @@
                     display: flex;
                     font: inherit;
                     text-align: left;
-                    color: color-mix(in srgb, var(--color-text) 60%,    transparent);
+                    color: color-mix(in srgb, var(--color-text) 60%, transparent);
                     gap: var(--scale-xs, 0.5rem);
                     background: none;
                     border: none;
@@ -761,11 +761,20 @@ body[data-page="contact"] {
                 field-sizing: content;
             }
 
-            output[data-output="error"] {
+            output {
                 display: block;
                 font-size: 0.9rem;
-                color: red;
-                visibility: hidden;
+
+                &[data-output="error"] {
+                    color: red;
+                    visibility: hidden;
+                }
+                
+                &[data-output="info"] {
+                    color: color-mix(in srgb, 
+                                     var(--color-text) 30%, 
+                                     transparent);
+                }
             }
         }
 
@@ -780,9 +789,7 @@ body[data-page="contact"] {
             font-size: 1rem;
             font-weight: var(--font-weight-bld, 600);
             color: white;
-            background: linear-gradient(135deg, 
-                var(--color-sunset-1), 
-                var(--color-sunset-3));
+            background: var(--color-sunset-1);
             border: none;
             border-radius: 0.5rem;
             cursor: pointer;

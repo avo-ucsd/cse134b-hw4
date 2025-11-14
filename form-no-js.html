@@ -57,11 +57,12 @@
                                minlength="2"
                                maxlength="100"
                                pattern="[A-Za-z\s\-']+"
-                               title="Please use only letters, spaces, hyphens, and apostrophes."
+                               title="Use only letters, spaces, hyphens, and apostrophes."
                                placeholder="e.g. First Last"
                                autocomplete="off" 
                                required>
-                        <span aria-live="polite">Please provide a valid name (max 100 characters).</span>
+                        <output name="error" id="contact-error-name" data-output="error">Error</output>
+                        <output name="info" id="contact-info-output" data-output="info"></output>
                     </form-field>
 
                     <form-field>
@@ -76,7 +77,8 @@
                                maxlength="255"
                                placeholder="e.g. example@email.com" 
                                required>
-                        <span aria-live="polite">Please provide a valid email (max 255 characters).</span>
+                        <output name="error" id="contact-error-email" data-output="error">Error</output>
+                        <output name="info" id="contact-info-output" data-output="info"></output>
                     </form-field>
                 </fieldset>
 
@@ -95,7 +97,8 @@
                            placeholder="e.g. Let's work together!"
                            autocomplete="off"
                            required>
-                    <span aria-live="polite">Subject must be 2-200 characters using only letters, spaces, hyphens, apostrophes, and punctuation.</span>
+                    <output name="error" id="contact-error-subject" data-output="error">Error</output>
+                    <output name="info" id="contact-info-output" data-output="info"></output>
                 </form-field>
 
                 <form-field>
@@ -110,15 +113,13 @@
                               maxlength="1000"
                               placeholder="e.g. Hello, world!" 
                               required></textarea>
-                    <span aria-live="polite">Message must be at least 10 characters long (max 1000 characters).</span>
+                    <output name="error" id="contact-error-message" data-output="error">Error</output>
+                    <output name="info" id="contact-info-output" data-output="info"></output>
                 </form-field>
 
                 <input type="hidden" name="possible_bot" value="true">
 
                 <input type="submit">
-
-                <output name="error" id="contact-error-output"></output>
-                <output name="info" id="contact-info-output"></output>
             </form>
         </section>
     </main>
