@@ -1,6 +1,9 @@
 const storageKeyTheme = 'theme-preference';
+const theme = {
+  value: getColorPreference()
+}
 
-const getColorPreference = () => {
+function getColorPreference() {
   if (localStorage.getItem(storageKeyTheme)) {
     return localStorage.getItem(storageKeyTheme);
   } else {
@@ -8,33 +11,33 @@ const getColorPreference = () => {
   }
 }
 
-const setPreference = () => {
+function setPreference() {
   localStorage.setItem(storageKeyTheme, theme.value);
   reflectPreference();
 }
 
-const reflectPreference = () => {
+function reflectPreference() {
   document.documentElement.setAttribute('data-theme', theme.value);
-};
+}
 
-const theme = {
-  value: getColorPreference()
+function changeTheme() {
+  theme.value = (theme.value === 'light') ? 'dark' : 'light';
+  setPreference();
+}
+  
+function init() {
+  reflectPreference();
+
+  const themeToggleButton = document.querySelector('#theme-toggle');
+  if (themeToggleButton) {
+    themeToggleButton.addEventListener('click', changeTheme);
+  }
 }
 
 // Set early so no page flashes
 reflectPreference();
 
-window.onload = () => {
-  reflectPreference();
-
-  const themeToggleButton = document.querySelector('#theme-toggle');
-  if (themeToggleButton) {
-    themeToggleButton.addEventListener('click', () => {
-      theme.value = (theme.value === 'light') ? 'dark' : 'light';
-      setPreference();
-    });
-  }
-}
+window.addEventListener('load', init);
 
 // Sync with system changes
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', ({matches:isDark}) => {
