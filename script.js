@@ -39,6 +39,9 @@ function init() {
   // Form validation
   const errorOutput = document.getElementById('contact-error');
   const infoOutput = document.getElementById('contact-info');
+  // Form error tracking
+  const form = document.querySelector('form');
+  const form_errors = [];
 
   // (1) Name
   const nameInput = document.getElementById('contact-name');
@@ -46,7 +49,7 @@ function init() {
     const nameValidity = nameInput.validity;
 
     if (nameValidity.valueMissing) {
-      nameInput.setCustomValidity('Please enter a name.');
+      nameInput.setCustomValidity('Name cannot be empty.');
     } else if (nameValidity.tooShort) {
       nameInput.setCustomValidity('Name must be at least 2 characters.');
     } else if (nameValidity.tooLong) {
@@ -74,10 +77,10 @@ function init() {
   const emailInput = document.getElementById('contact-email');
   emailInput.addEventListener('input', (event) => {
     const emailValidity = emailInput.validity;
-    const emailPattern = /^[\w.!#$%&'*+/=?^`{|}~-]+@[a-z\d](?:[a-z\d-]{0,61}[a-z\d])?(?:\.[a-z\d](?:[a-z\d-]{0,61}[a-z\d])?)+$/i;;
+    const emailPattern = /^[\w.!#$%&'*+/=?^`{|}~-]+@[a-z\d](?:[a-z\d-]{0,61}[a-z\d])?(?:\.[a-z\d](?:[a-z\d-]{0,61}[a-z\d])?)+$/i;
 
     if (emailValidity.valueMissing) {
-      emailInput.setCustomValidity('Please enter an email.');
+      emailInput.setCustomValidity('Email cannot be empty.');
     } else if (emailValidity.typeMismatch) {
       emailInput.setCustomValidity('Please enter in a valid email address.');
     } else if (emailValidity.tooShort) {
@@ -97,7 +100,7 @@ function init() {
     const subjectValidity = subjectInput.validity;
 
     if (subjectValidity.valueMissing) {
-      subjectInput.setCustomValidity('Please enter a subject.');
+      subjectInput.setCustomValidity('Subject cannot be empty.');
     } else if (subjectValidity.tooShort) {
       subjectInput.setCustomValidity('Subject must be at least 2 characters.');
     } else if (subjectValidity.tooLong) {
@@ -139,6 +142,34 @@ function init() {
     } else {
       infoOutput.style.color = '';
       infoOutput.style.fontWeight = '';
+    }
+  });
+
+  // Form submission handler
+  const fields = [nameInput, emailInput, subjectInput, messageInput];
+
+  fields.forEach(field => {
+    field.addEventListener('invalid', (event) => {
+      // Add to form_errors array
+      form_errors.push({
+        field: field.name,
+        value: field.value,
+        error: field.validationMessage
+      });
+    });
+  });
+
+  // On successful submit, include errors if any exist
+  form.addEventListener('submit', (event) => {
+    if (form_errors.length > 0) {
+      let errorsInput = document.querySelector('input[name="form-errors"]');
+      if (!errorsInput) {
+        errorsInput = document.createElement('input');
+        errorsInput.type = 'hidden';
+        errorsInput.name = 'form-errors';
+        form.appendChild(errorsInput);
+      }
+      errorsInput.value = JSON.stringify(form_errors);
     }
   });
 }
