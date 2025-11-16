@@ -61,8 +61,6 @@
                                placeholder="e.g. First Last"
                                autocomplete="off" 
                                required>
-                        <output name="error" id="contact-error-name" data-output="error">Error</output>
-                        <output name="info" id="contact-info-output" data-output="info"></output>
                     </form-field>
 
                     <form-field>
@@ -77,8 +75,6 @@
                                maxlength="255"
                                placeholder="e.g. example@email.com" 
                                required>
-                        <output name="error" id="contact-error-email" data-output="error">Error</output>
-                        <output name="info" id="contact-info-output" data-output="info"></output>
                     </form-field>
                 </fieldset>
 
@@ -97,8 +93,6 @@
                            placeholder="e.g. Let's work together!"
                            autocomplete="off"
                            required>
-                    <output name="error" id="contact-error-subject" data-output="error">Error</output>
-                    <output name="info" id="contact-info-output" data-output="info"></output>
                 </form-field>
 
                 <form-field>
@@ -113,11 +107,12 @@
                               maxlength="1000"
                               placeholder="e.g. Hello, world!" 
                               required></textarea>
-                    <output name="error" id="contact-error-message" data-output="error">Error</output>
-                    <output name="info" id="contact-info-output" data-output="info"></output>
                 </form-field>
 
                 <input type="hidden" name="possible_bot" value="true">
+
+                <output name="error" id="contact-error" data-output="error">Error</output>
+                <output name="info" id="contact-info" data-output="info"></output>
 
                 <input type="submit">
             </form>
