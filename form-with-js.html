@@ -88,7 +88,7 @@
                            id="contact-subject"
                            minlength="2"
                            maxlength="200"
-                           pattern="[A-Za-z\s\-'.!?]+"
+                           pattern="[0-9A-Za-z\s\-'.!?]+"
                            title="Please use only letters, spaces, hyphens, apostrophes, and punctuation."
                            placeholder="e.g. Let's work together!"
                            autocomplete="off"
@@ -108,11 +108,10 @@
                               placeholder="e.g. Hello, world!" 
                               required></textarea>
                 </form-field>
+                <output name="info" id="contact-info" data-output="info">0 / 1000</output>
+                <output name="error" id="contact-error" data-output="error">Error</output>
 
                 <input type="hidden" name="possible_bot" value="true">
-
-                <output name="error" id="contact-error" data-output="error">Error</output>
-                <output name="info" id="contact-info" data-output="info"></output>
 
                 <input type="submit">
             </form>

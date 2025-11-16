@@ -37,6 +37,9 @@ function init() {
   }
 
   // Form validation
+  const errorOutput = document.getElementById('contact-error');
+  const infoOutput = document.getElementById('contact-info');
+
   // (1) Name
   const nameInput = document.getElementById('contact-name');
   nameInput.addEventListener('change', (event) => {
@@ -52,10 +55,24 @@ function init() {
       nameInput.setCustomValidity('');
     }
   });
+  nameInput.addEventListener('input', (event) => {
+    const value = nameInput.value;
+    const lastChar = value[value.length - 1];
+    const namePattern = /[A-Za-z\s\-']/;
+
+    if (lastChar && !namePattern.test(lastChar)) {
+      errorOutput.innerText = `"${lastChar}" is not a valid character for a name.`;
+      errorOutput.style.visibility = 'visible';
+
+      setTimeout(() => {
+        errorOutput.style.visibility = 'hidden';
+      }, '5000');
+    }
+  });
 
   // (2) Email
   const emailInput = document.getElementById('contact-email');
-  emailInput.addEventListener('change', (event) => {
+  emailInput.addEventListener('input', (event) => {
     const emailValidity = emailInput.validity;
     const emailPattern = /^[\w.!#$%&'*+/=?^`{|}~-]+@[a-z\d](?:[a-z\d-]{0,61}[a-z\d])?(?:\.[a-z\d](?:[a-z\d-]{0,61}[a-z\d])?)+$/i;;
 
@@ -75,6 +92,55 @@ function init() {
   });
 
   // (3) Subject
+  const subjectInput = document.getElementById('contact-subject');
+  subjectInput.addEventListener('change', (event) => {
+    const subjectValidity = subjectInput.validity;
+
+    if (subjectValidity.valueMissing) {
+      subjectInput.setCustomValidity('Please enter a subject.');
+    } else if (subjectValidity.tooShort) {
+      subjectInput.setCustomValidity('Subject must be at least 2 characters.');
+    } else if (subjectValidity.tooLong) {
+      subjectInput.setCustomValidity('Subject must be at most 200 characters.');
+    } else {
+      subjectInput.setCustomValidity('');
+    }
+  });
+  subjectInput.addEventListener('input', (event) => {
+    const value = subjectInput.value;
+    const lastChar = value[value.length - 1];
+    const subjectPattern = /[0-9A-Za-z\s\-'.!?]/;
+
+    if (lastChar && !subjectPattern.test(lastChar)) {
+      errorOutput.innerText = `"${lastChar}" is not a valid character for a subject.`;
+      errorOutput.style.visibility = 'visible';
+
+      setTimeout(() => {
+        errorOutput.style.visibility = 'hidden';
+      }, '5000');
+    }
+  });
+
+  // (4) Message
+  const messageInput = document.getElementById('contact-message');
+  const maxLength = parseInt(messageInput.getAttribute('maxlength'));
+  messageInput.addEventListener('input', (event) => {
+    const currentLength = messageInput.value.length;
+    const remainingLength = maxLength - currentLength;
+
+    infoOutput.innerText = `${currentLength} / ${maxLength}`;
+
+    if (remainingLength <= 50) {
+      infoOutput.style.color = 'red';
+      infoOutput.style.fontWeight = 'bold';
+    } else if (remainingLength <= 100) {
+      infoOutput.style.color = 'orange';
+      infoOutput.style.fontWeight = 'bold';
+    } else {
+      infoOutput.style.color = '';
+      infoOutput.style.fontWeight = '';
+    }
+  });
 }
 
 // function init() {

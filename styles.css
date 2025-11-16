@@ -767,14 +767,14 @@ body[data-page="contact"] {
         }
 
         output {
-            border-radius: var(--scale-sm, 1rem);
-            padding: var(--scale-sm, 1rem);
+            display: block;
             margin-bottom: var(--scale-sm, 1rem);
 
             &[data-output="error"] {
-                display: block;
                 color: red;
+                padding: var(--scale-sm, 1rem);
                 border: 1px solid red;
+                border-radius: var(--scale-sm, 1rem);
                 background-color: color-mix(in srgb, 
                                     red 10%, 
                                     transparent);
@@ -782,12 +782,11 @@ body[data-page="contact"] {
             }
             
             &[data-output="info"] {
-                display: none;
-                color: skyblue;
-                border: 1px solid skyblue;
-                background-color: color-mix(in srgb, 
-                                    skyblue 10%, 
+                color: color-mix(in srgb, 
+                                    var(--color-text) 50%, 
                                     transparent);
+                margin-top: calc(var(--scale-sm, 1rem) * -1);
+                text-align: right;
             }
         }
 
